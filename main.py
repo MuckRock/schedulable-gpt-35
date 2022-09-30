@@ -1,38 +1,26 @@
-"""
-This is a hello world add-on for DocumentCloud.
-
-It demonstrates how to write a add-on which can be activated from the
-DocumentCloud add-on system and run using Github Actions.  It receives data
-from DocumentCloud via the request dispatch and writes data back to
-DocumentCloud using the standard API
-"""
 
 from documentcloud.addon import AddOn
 
+PROJ_ID = 209284
+FILECOIN_ID = 104
+BATCH_SIZE = 10
 
-class HelloWorld(AddOn):
-    """An example Add-On for DocumentCloud."""
+class CrestFilecoin(AddOn):
 
     def main(self):
-        """The main add-on functionality goes here."""
-        # fetch your add-on specific data
-        name = self.data.get("name", "world")
 
-        self.set_message("Hello World start!")
-
-        # add a hello note to the first page of each selected document
-        for document in self.get_documents():
-            # get_documents will iterate through all documents efficiently,
-            # either selected or by query, dependeing on which is passed in
-            document.annotations.create(f"Hello {name}!", 0)
-
-        with open("hello.txt", "w+") as file_:
-            file_.write("Hello world!")
-            self.upload_file(file_)
-
-        self.set_message("Hello World end!")
-        self.send_mail("Hello World!", "We finished!")
+        # Search for all documents in the CREST project which do not yet have an
+        # Estuary ID.  The Estuary ID metadata will be set by the Filecoin Add-On
+        # after it has been uploaded to Filecoin via Estuary
+        documents = self.client.documents.search(f"+project:{PROJ_ID} -data_estuaryId:*")
+        # Pull out the IDs for a batch of the documents
+        doc_ids = [d["id"] for d in documents[:BATCH_SIZE]]
+        # Run the Filecoin Add-On for this batch of documents
+        self.client.post(
+            "addon_runs/",
+            json={"addon": FILECOIN_ID, "parameters": {}, "documents": doc_ids},
+        )
 
 
 if __name__ == "__main__":
-    HelloWorld().main()
+    CrestFilecoin().main()
