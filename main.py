@@ -16,7 +16,7 @@ class CrestFilecoin(AddOn):
         # after it has been uploaded to Filecoin via Estuary
         documents = self.client.documents.search(f"+project:{PROJ_ID} -data_estuaryId:*")
         # Pull out the IDs for a batch of the documents
-        doc_ids = [d["id"] for d in islice(documents, BATCH_SIZE)]
+        doc_ids = [d.id for d in islice(documents, BATCH_SIZE)]
         # Run the Filecoin Add-On for this batch of documents
         self.client.post(
             "addon_runs/",
