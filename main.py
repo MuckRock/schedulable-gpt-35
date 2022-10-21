@@ -4,7 +4,8 @@ from documentcloud.addon import AddOn
 
 PROJ_ID = 209284
 FILECOIN_ID = 104
-BATCH_SIZE = 100
+BATCH_SIZE = 50
+BATCH_NUM = 2
 
 
 class CrestFilecoin(AddOn):
@@ -16,18 +17,21 @@ class CrestFilecoin(AddOn):
         documents = self.client.documents.search(
             f"+project:{PROJ_ID} -data_estuaryId:*"
         )
-        # Pull out the IDs for a batch of the documents
-        doc_ids = [d.id for d in islice(documents, BATCH_SIZE)]
-        # Run the Filecoin Add-On for this batch of documents
-        self.client.post(
-            "addon_runs/",
-            json={
-                "addon": FILECOIN_ID,
-                "parameters": {},
-                "documents": doc_ids,
-                "dismissed": True,
-            },
-        )
+        for i in range(BATCH_NUM):
+            # Pull out the IDs for a batch of the documents
+            doc_ids = [
+                d.id for d in islice(documents, i * BATCH_SIZE, (i + 1) * BATCH_SIZE)
+            ]
+            # Run the Filecoin Add-On for this batch of documents
+            self.client.post(
+                "addon_runs/",
+                json={
+                    "addon": FILECOIN_ID,
+                    "parameters": {},
+                    "documents": doc_ids,
+                    "dismissed": True,
+                },
+            )
 
 
 if __name__ == "__main__":
