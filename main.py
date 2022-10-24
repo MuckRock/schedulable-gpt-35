@@ -4,8 +4,8 @@ from documentcloud.addon import AddOn
 
 PROJ_ID = 209284
 FILECOIN_ID = 104
-BATCH_SIZE = 10
-BATCH_NUM = 4
+BATCH_SIZE = 1
+BATCH_NUM = 10
 
 
 class CrestFilecoin(AddOn):
