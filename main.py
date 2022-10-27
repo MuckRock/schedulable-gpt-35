@@ -4,7 +4,7 @@ from documentcloud.addon import AddOn
 
 PROJ_ID = 209284
 FILECOIN_ID = 104
-BATCH_SIZE = 1
+BATCH_SIZE = 5
 BATCH_NUM = 10
 
 
