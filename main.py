@@ -3,7 +3,7 @@ from itertools import islice
 from documentcloud.addon import AddOn
 
 PROJ_ID = 209284
-FILECOIN_ID = 104
+FILECOIN_ID = 612
 BATCH_SIZE = 10
 BATCH_NUM = 1
 
@@ -12,10 +12,10 @@ class CrestFilecoin(AddOn):
     def main(self):
 
         # Search for all documents in the CREST project which do not yet have an
-        # Estuary ID.  The Estuary ID metadata will be set by the Filecoin Add-On
-        # after it has been uploaded to Filecoin via Estuary
+        # IPFS URL.  The IPFS URL metadata will be set by the Filecoin Add-On
+        # after it has been uploaded to Filecoin via Web3 Storage
         documents = self.client.documents.search(
-            f"+project:{PROJ_ID} -data_estuaryId:*"
+            f"+project:{PROJ_ID} -data_ipfsUrl:*"
         )
         for i in range(BATCH_NUM):
             # Pull out the IDs for a batch of the documents
