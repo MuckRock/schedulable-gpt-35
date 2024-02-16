@@ -4,13 +4,13 @@ instructions: ''
 type: object
 properties:
   batch_size:
-    title: 'Batch size'
+    title: Batch size
     type: integer
   project_id:
-    title: "Project ID"
+    title: Project ID
     type: integer
   key_name:
-    title: "Key"
+    title: Key
     type: string
 required:
   - batch_size
