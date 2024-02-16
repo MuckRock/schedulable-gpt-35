@@ -23,7 +23,7 @@ properties:
     description: "GPT 3.5 Turbo Prompt you want to run on each batch of documents"
   limiter:
     title: "Limiter"
-    type: string
+    type: integer
     minimum: 1000
     maximum: 56000
     default: 20000

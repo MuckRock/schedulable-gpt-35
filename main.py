@@ -33,6 +33,7 @@ class GPTScheduler(AddOn):
                     "parameters": {
                         "value": f"{key_name}",
                         "prompt": f"{prompt}"
+                        "limiter": f"{limiter}"
                     },
                     "documents": doc_ids,
                     "dismissed": True,
