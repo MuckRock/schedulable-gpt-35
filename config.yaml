@@ -16,10 +16,15 @@ properties:
     title: "Key"
     type: string
     description: "The name of the key you are using to label the documents with"
+  prompt:
+    title: "Prompt"
+    type: string
+    description: "GPT 3.5 Turbo Prompt you want to run on each batch of documents"
 required:
   - batch_size
   - project_id
   - key_name
+  - prompt
 eventOptions:
   name: gpt
   events:
