@@ -6,15 +6,12 @@ properties:
   batch_size:
     title: 'Batch size'
     type: integer
-    description: "How many documents do you want analyzed per scheduled run?"
   project_id:
     title: "Project ID"
     type: integer
-    description: "Project ID of the project you would like to run this on." 
   key_name:
     title: "Key"
     type: string
-    description: "The name of the key you are using to label the documents with"
 required:
   - batch_size
   - project_id
