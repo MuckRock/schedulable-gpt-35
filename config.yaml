@@ -6,8 +6,8 @@ properties:
   batch_size:
     title: Batch size
     type: integer
-    default: 100
     description: How many documents do you want analyzed per scheduled run?
+    default: 100
   project_id:
     title: Project ID 
     type: integer
