@@ -20,6 +20,8 @@ required:
   - batch_size
   - project_id
   - key_name
+categories:
+  - ai
 eventOptions:
   name: gpt
   events:
