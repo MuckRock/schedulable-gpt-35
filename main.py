@@ -32,7 +32,7 @@ class GPTScheduler(AddOn):
                     "addon": run_id,
                     "parameters": {
                         "value": f"{key_name}",
-                        "prompt": f"{prompt}"
+                        "prompt": f"{prompt}",
                         "limiter": f"{limiter}"
                     },
                     "documents": doc_ids,
