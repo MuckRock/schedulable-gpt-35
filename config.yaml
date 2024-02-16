@@ -18,9 +18,3 @@ required:
   - key_name
 categories:
   - ai
-eventOptions:
-  name: gpt
-  events:
-    - hourly
-    - daily
-    - weekly
