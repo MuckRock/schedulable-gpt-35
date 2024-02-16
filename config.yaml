@@ -1,27 +1,26 @@
 title: GPT 3.5 Turbo Scheduler
-description: Run the GPT 3.5 Turbo Add-On on a batch of documents using a schedule. 
+description: "Run the GPT 3.5 Turbo Add-On on a batch of documents using a schedule" 
 type: object
 documents: []
 properties:
   batch_size:
-    title: Batch size
+    title: 'Batch size'
     type: integer
-    description: How many documents do you want analyzed per scheduled run?
-    default: 100
+    description: "How many documents do you want analyzed per scheduled run?"
   project_id:
-    title: Project ID 
+    title: "Project ID"
     type: integer
-    description: Project ID of the project you would like to run this on. 
+    description: "Project ID of the project you would like to run this on." 
   key_name:
-    title: Key 
+    title: "Key"
     type: string
-    description: The name of the key you are using to label the documents with. 
+    description: "The name of the key you are using to label the documents with"
 required:
   - batch_size
   - project_id
   - key_name
 eventOptions:
-  name: title
+  name: gpt
   events:
     - hourly
     - daily
