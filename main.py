@@ -7,7 +7,7 @@ class GPTScheduler(AddOn):
 
     def main(self):
         """Pulls the batch size of documents and runs the Add-On on the next set"""
-        run_id = 627
+        run_id = 352
 
         batch_num = 1
         batch_size = self.data.get("batch_size")
