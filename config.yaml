@@ -1,5 +1,6 @@
 title: "GPT 3.5 Turbo Scheduler"
 description: "Run the GPT 3.5 Turbo Add-On on a batch of documents using a schedule" 
+instructions: ''
 type: object
 documents: []
 properties:
