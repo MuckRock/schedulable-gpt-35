@@ -1,33 +1,40 @@
+""" islice to make batches of documents, AddOn import """
 from itertools import islice
-
 from documentcloud.addon import AddOn
 
-PROJ_ID = 209284
-FILECOIN_ID = 104
-BATCH_SIZE = 25
-BATCH_NUM = 2
+class GPTScheduler(AddOn):
+    """Allows you to run the GPT 3.5 Turbo Add-On on a scheduled basis"""
 
-
-class CrestFilecoin(AddOn):
     def main(self):
+        """Pulls the batch size of documents and runs the Add-On on the next set"""
+        run_id = 627
 
-        # Search for all documents in the CREST project which do not yet have an
-        # IPFS URL.  The IPFS URL metadata will be set by the Filecoin Add-On
-        # after it has been uploaded to Filecoin via Web3 Storage
+        batch_num = 1
+        batch_size = self.data.get("batch_size")
+        proj_id = self.data.get("project_id")
+        key_name = self.data.get("key_name")
+        prompt = self.data.get("prompt")
+        limiter = self.data.get("limiter")
+
         documents = self.client.documents.search(
-            f"+project:{PROJ_ID} -data_ipfsUrl:*"
+            f"+project:{proj_id} -data_{key_name}:*"
         )
-        for i in range(BATCH_NUM):
+
+        for i in range(batch_num):
             # Pull out the IDs for a batch of the documents
             doc_ids = [
-                d.id for d in islice(documents, i * BATCH_SIZE, (i + 1) * BATCH_SIZE)
+                d.id for d in islice(documents, i * batch_size, (i + 1) * batch_size)
             ]
-            # Run the Filecoin Add-On for this batch of documents
+            # Run the GPT 3.5 Turbo Add-On for this batch of documents
             self.client.post(
                 "addon_runs/",
                 json={
-                    "addon": FILECOIN_ID,
-                    "parameters": {},
+                    "addon": run_id,
+                    "parameters": {
+                        "value": f"{key_name}",
+                        "prompt": f"{prompt}",
+                        "limiter": f"{limiter}",
+                    },
                     "documents": doc_ids,
                     "dismissed": True,
                 },
@@ -35,4 +42,4 @@ class CrestFilecoin(AddOn):
 
 
 if __name__ == "__main__":
-    CrestFilecoin().main()
+    GPTScheduler().main()
