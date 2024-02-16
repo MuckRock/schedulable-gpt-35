@@ -1,16 +1,28 @@
-title: GPT Turbo Schedule
-description: This is an updated simple test add-on
-instructions: This is a sample instruction.
+title: "GPT 3.5 Turbo Scheduler"
+description: "Run the GPT 3.5 Turbo Add-On on a batch of documents using a schedule" 
+instructions: ''
 type: object
-documents:
-  - query
-  - selected
+documents: []
 properties:
-  name:
-    title: Name
+  batch_size:
+    title: 'Batch size'
+    type: integer
+    description: "How many documents do you want analyzed per scheduled run?"
+  project_id:
+    title: "Project ID"
+    type: integer
+    description: "Project ID of the project you would like to run this on." 
+  key_name:
+    title: "Key"
     type: string
-categories: 
-  - file
-# Acceptable categories are premium, ai, export, bulk, file,  monitor, statistical, and extraction. 
-# You can read more about DocumentCloud Add-On categories here: https://www.documentcloud.org/help/add-ons#types-of-add-ons
-version: 2
+    description: "The name of the key you are using to label the documents with"
+required:
+  - batch_size
+  - project_id
+  - key_name
+eventOptions:
+  name: gpt
+  events:
+    - hourly
+    - daily
+    - weekly
