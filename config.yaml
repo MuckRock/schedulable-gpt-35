@@ -17,6 +17,10 @@ properties:
     title: "Key"
     type: string
     description: "The name of the key you are using to label the documents with"
+  filter_key:
+    title: "Filter Key"
+    type: string
+    description: "If you need to narrow down the document set further, provide a key name you want to filter by"
   prompt:
     title: "Prompt"
     type: string
