@@ -19,7 +19,7 @@ class GPTScheduler(AddOn):
 
         if filter_key is not None:
             documents = self.client.documents.search(
-                f"+project:{proj_id} -data_{key_name}:* data_{filter_key}"
+                f"+project:{proj_id} -data_{key_name}:* data_{filter_key}:*"
             )
         else:
             documents = self.client.documents.search(
