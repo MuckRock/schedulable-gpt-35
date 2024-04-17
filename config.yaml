@@ -20,7 +20,11 @@ properties:
   filter_key:
     title: "Filter Key"
     type: string
-    description: "If you need to narrow down the document set further, provide a key name you want to filter by"
+    description: "If you need to narrow down the document set further, provide a key name you want to filter by. If value isn't also specified, then it will filter on any documents that have that key."
+  filter_value:
+    title: "Filter Value"
+    type: string
+    description: "If you want to provide a specific key/value pair to narrow on, provide the value here and the key in filter key. "
   prompt:
     title: "Prompt"
     type: string

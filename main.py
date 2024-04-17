@@ -16,11 +16,17 @@ class GPTScheduler(AddOn):
         prompt = self.data.get("prompt")
         limiter = self.data.get("limiter")
         filter_key = self.data.get("filter_key")
+        filter_value = self.data.get("filter_value")
 
         if filter_key is not None:
-            documents = self.client.documents.search(
-                f"+project:{proj_id} -data_{key_name}:* data_{filter_key}:*"
-            )
+            if filter_value is not None:
+                documents = self.client.documents.search(
+                    f"+project:{proj_id} -data_{key_name}:* data_{filter_key}:{filter_value}"
+                )
+            else:
+                documents = self.client.documents.search(
+                    f"+project:{proj_id} -data_{key_name}:* data_{filter_key}:*"
+                )
         else:
             documents = self.client.documents.search(
                 f"+project:{proj_id} -data_{key_name}:*"
