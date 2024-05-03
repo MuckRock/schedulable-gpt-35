@@ -21,15 +21,15 @@ class GPTScheduler(AddOn):
         if filter_key is not None:
             if filter_value is not None:
                 documents = self.client.documents.search(
-                    f"+project:{proj_id} -data_{key_name}:* data_{filter_key}:{filter_value}"
+                    f'+project:{proj_id} -data_{key_name}:* data_{filter_key}:"{filter_value}"'
                 )
             else:
                 documents = self.client.documents.search(
-                    f"+project:{proj_id} -data_{key_name}:* data_{filter_key}:*"
+                    f'+project:{proj_id} -data_{key_name}:* data_{filter_key}:*'
                 )
         else:
             documents = self.client.documents.search(
-                f"+project:{proj_id} -data_{key_name}:*"
+                f'+project:{proj_id} -data_{key_name}:*'
             )
         for i in range(batch_num):
             # Pull out the IDs for a batch of the documents
