@@ -47,3 +47,6 @@ eventOptions:
     - hourly
     - daily
     - weekly
+categories:
+  - ai
+  - premium
