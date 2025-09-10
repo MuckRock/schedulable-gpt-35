@@ -28,7 +28,7 @@ properties:
   prompt:
     title: "Prompt"
     type: string
-    description: "GPT 4o Turbo Prompt you want to run on each batch of documents"
+    description: "GPT 4o Prompt you want to run on each batch of documents"
   limiter:
     title: "Limiter"
     type: integer
