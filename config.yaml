@@ -1,5 +1,5 @@
-title: "GPT 3.5 Turbo Scheduler"
-description: "Run the GPT 3.5 Turbo Add-On on a batch of documents using a schedule" 
+title: "GPT 4o Scheduler"
+description: "Run the GPT 4o Add-On on a batch of documents using a schedule" 
 instructions: ''
 type: object
 documents: []
@@ -28,12 +28,12 @@ properties:
   prompt:
     title: "Prompt"
     type: string
-    description: "GPT 3.5 Turbo Prompt you want to run on each batch of documents"
+    description: "GPT 4o Turbo Prompt you want to run on each batch of documents"
   limiter:
     title: "Limiter"
     type: integer
     minimum: 1000
-    maximum: 56000
+    maximum: 460000
     default: 20000
     description: "Number of tokens to limit the GPT prompt on"
 required:

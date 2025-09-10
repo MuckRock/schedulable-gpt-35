@@ -3,7 +3,7 @@ from itertools import islice
 from documentcloud.addon import AddOn
 
 class GPTScheduler(AddOn):
-    """Allows you to run the GPT 3.5 Turbo Add-On on a scheduled basis"""
+    """Allows you to run the GPT 4oTurbo Add-On on a scheduled basis"""
 
     def main(self):
         """Pulls the batch size of documents and runs the Add-On on the next set"""
@@ -36,7 +36,7 @@ class GPTScheduler(AddOn):
             doc_ids = [
                 d.id for d in islice(documents, i * batch_size, (i + 1) * batch_size)
             ]
-            # Run the GPT 3.5 Turbo Add-On for this batch of documents
+            # Run the GPT 4o Turbo Add-On for this batch of documents
             self.client.post(
                 "addon_runs/",
                 json={
